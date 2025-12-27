@@ -5,14 +5,14 @@ chown $(id -u):$(id -u) -R /V/{conf,db,logs}
 chmod 777 -R /V/{conf,db,logs}
 
 if [ -f /V/db/passwd.bak ]; then
-    sed -i -e "/\/home\//d" /etc/passwd
-    while IFS=: read -r user pass uid other; do
-        adduser -D -u "$uid" -G samba -s /sbin/nologin "$user"
-    done < /V/db/passwd.bak
+	sed -i -e "/\/home\//d" /etc/passwd
+	while IFS=: read -r user pass uid other; do
+		adduser -D -u "$uid" -G samba -s /sbin/nologin "$user"
+	done </V/db/passwd.bak
 fi
 
 if [ -f /V/db/passdb.tdb ]; then
-    cp /V/db/passdb.tdb /usr/local/lib/passdb.tdb
+	cp /V/db/passdb.tdb /usr/local/lib/passdb.tdb
 fi
 
 nmbd
