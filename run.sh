@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir -p /V/{conf,db,logs}
-chown $(id -u):$(id -u) -R /V/{conf,db,logs}
-chmod 777 -R /V/{conf,db,logs}
+mkdir -p /V/{conf,db,logs,data}
+chown $(id -u):$(id -u) -R /V/{conf,db,logs,data}
+chmod 777 -R /V/{conf,db,logs,data}
 
 if [ -f /V/db/passwd.bak ]; then
 	sed -i -e "/\/home\//d" /etc/passwd
